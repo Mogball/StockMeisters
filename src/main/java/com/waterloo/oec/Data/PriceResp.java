@@ -25,7 +25,7 @@ public class PriceResp {
 		errors = Util.jarrToStrArr(errArr);
 		ticker = o.get("ticker").getAsString();
 		price = o.get("price").getAsInt();
-		JsonArray priceArr = o.get("historical_prices").getAsJsonArray();
+		JsonArray priceArr = o.get("historical_price").getAsJsonArray();
 		histPrices = Util.jarrToIntArr(priceArr);
 	}
 
