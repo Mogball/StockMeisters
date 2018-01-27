@@ -1,7 +1,6 @@
 package com.waterloo.oec;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 
 /**
  * Created by Jeff Niu
@@ -12,12 +11,24 @@ public class Util {
 		System.out.println(o);
 	}
 
-	public static String[] jsonArraytoStrArray(JsonArray jarr) {
+	public static void errln(String err) {
+		System.err.println(err);
+	}
+
+	public static String[] jarrToStrArr(JsonArray jarr) {
 		String[] strings = new String[jarr.size()];
 		for (int i = 0; i < jarr.size(); i++) {
 			strings[i] = jarr.get(i).getAsString();
 		}
 		return strings;
+	}
+
+	public static int[] jarrToIntArr(JsonArray jarr) {
+		int[] ints = new int[jarr.size()];
+		for (int i = 0; i < jarr.size(); i++) {
+			ints[i] = jarr.get(i).getAsInt();
+		}
+		return ints;
 	}
 
 }
