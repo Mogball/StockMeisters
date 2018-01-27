@@ -53,7 +53,6 @@ public class BotClient {
 			HttpGet get = new HttpGet(b.build());
 			HttpResponse resp = client.execute(get);
 			String json = EntityUtils.toString(resp.getEntity(), "UTF-8");
-			Gson gson = new Gson();
 			return new AccountResp(new JsonParser().parse(json));
 		} catch (Exception e) {
 			errln("AccountResp Exception: " + e.toString());
@@ -65,7 +64,12 @@ public class BotClient {
 	public ListResp list() {
 		try {
 			URIBuilder b = new URIBuilder(BASE + LIST);
-
+			addKey(b);
+			println(b);
+			HttpGet get = new HttpGet(b.build());
+			HttpResponse resp = client.execute(get);
+			String json = EntityUtils.toString(resp.getEntity(), "UTF-8");
+			return new ListResp(new JsonParser().parse(json));
 		} catch (Exception e) {
 			errln("ListResp Exception: " + e.toString());
 			return null;
